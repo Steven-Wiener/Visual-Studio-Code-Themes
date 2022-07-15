@@ -1,10 +1,10 @@
 {
-    "name": "neonnihilus",
-    "displayName": "NeonNihilus",
-    "description": "Neon Theme based on Neon Glow, Neon Vommit, and SynthWave themes",
+    "name": "neonvomitnight",
+    "displayName": "Neon Vomit Night",
+    "description": "Color theme - inspired by Neon Vommit and Neon Glow Theme",
     "version": "0.0.1",
     "engines": {
-        "vscode": "^1.69.0"
+        "vscode": "^1.58.1"
     },
     "categories": [
         "Themes"
@@ -12,7 +12,7 @@
     "contributes": {
         "themes": [
             {
-                "label": "NeonNihilus",
+                "label": "Neon Vomit Night",
                 "uiTheme": "vs-dark",
                 "path": "./themes/NeonNihilus-color-theme.json"
             }
