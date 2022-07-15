@@ -1,7 +1,7 @@
 {
     "name": "neonvomitnight",
     "displayName": "Neon Vomit Night",
-    "description": "Color theme - inspired by Neon Vommit and Neon Glow Theme",
+    "description": "Color theme - inspired by Neon Vommit, Glow Night, and Neon Glow Theme",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.58.1"
