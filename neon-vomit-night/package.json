@@ -5,6 +5,7 @@
     "version": "0.0.1",
     "author": "Steven Wiener",
     "publisher": "Steven-Wiener",
+    "icon": "icon.png",
     "engines": {
         "vscode": "^1.58.1"
     },
