@@ -31,5 +31,6 @@
     },
     "sponsor": {
         "url": "https://account.venmo.com/u/Steven-Wiener-1"
-    }
+    },
+    "license": "MIT"
 }
