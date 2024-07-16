@@ -28,5 +28,8 @@
     "repository": {
       "type": "git",
       "url": "https://github.com/Steven-Wiener/Visual-Studio-Code-Themes"
+    },
+    "sponsor": {
+        "url": "https://account.venmo.com/u/Steven-Wiener-1"
     }
 }
