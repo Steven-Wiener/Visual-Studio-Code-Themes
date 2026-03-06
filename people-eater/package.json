@@ -1,0 +1,48 @@
+{
+  "name": "my-generated-theme",
+  "displayName": "My Generated Theme",
+  "description": "A dark VS Code color theme.",
+  "version": "0.0.1",
+  "publisher": "Steven-Wiener",
+  "author": {
+    "name": "Steven Wiener",
+    "url": "https://steven-wiener.github.io/"
+  },
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.91.1"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "galleryBanner": {
+    "color": "#0d0935",
+    "theme": "dark"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "My Generated Theme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/my-generated-theme-color-theme.json"
+      }
+    ]
+  },
+  "keywords": [
+    "color-theme",
+    "vscode-theme",
+    "dark-theme"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Steven-Wiener/Visual-Studio-Code-Themes"
+  },
+  "homepage": "https://github.com/Steven-Wiener/Visual-Studio-Code-Themes",
+  "bugs": {
+    "url": "https://github.com/Steven-Wiener/Visual-Studio-Code-Themes/issues"
+  },
+  "sponsor": {
+    "url": "https://account.venmo.com/u/Steven-Wiener-1"
+  }
+}
