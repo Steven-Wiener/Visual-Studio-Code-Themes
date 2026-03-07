@@ -1,17 +1,22 @@
 {
     "name": "neon-vomit-night",
     "displayName": "Neon Vomit Night",
-    "description": "Color theme - inspired by Neon Vommit, Glow Night, and Neon Glow Theme",
-    "version": "0.0.1",
-    "author": "Steven Wiener",
+    "version": "0.0.2",
     "publisher": "Steven-Wiener",
+    "description": "Color theme - inspired by Neon Vommit, Glow Night, and Neon Glow Theme",
+    "author": {
+        "name": "Steven Wiener",
+        "url": "https://steven-wiener.github.io/"
+    },
+    "categories": ["Themes"],
     "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#070425",
+        "theme": "dark"
+    },
     "engines": {
         "vscode": "^1.58.1"
     },
-    "categories": [
-        "Themes"
-    ],
     "contributes": {
         "themes": [
             {
@@ -25,10 +30,15 @@
         "neon",
         "glow"
     ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Steven-Wiener/Visual-Studio-Code-Themes/issues/new?title=Neon%20Vomit%20Night%20%7C%20"
+    },
     "repository": {
       "type": "git",
       "url": "https://github.com/Steven-Wiener/Visual-Studio-Code-Themes"
     },
+    "homepage": "https://github.com/Steven-Wiener/Visual-Studio-Code-Themes/blob/main/neon-vomit-night/README.md",
     "sponsor": {
         "url": "https://account.venmo.com/u/Steven-Wiener-1"
     }
