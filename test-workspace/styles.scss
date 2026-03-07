@@ -1,0 +1,244 @@
+/**
+ * theme_preview.scss — CSS/SCSS syntax showcase
+ * Covers: custom properties, nesting, mixins, functions, at-rules,
+ *         selectors, animations, grid, clamp, calc, media queries
+ */
+
+// ── Variables ─────────────────────────────────────────────────────────────────
+$font-mono:   'JetBrains Mono', 'Fira Code', Consolas, monospace;
+$font-sans:   'DM Sans', system-ui, sans-serif;
+$breakpoints: ('sm': 640px, 'md': 768px, 'lg': 1024px, 'xl': 1280px);
+$easing:      cubic-bezier(0.4, 0, 0.2, 1);
+
+// ── Custom properties (design tokens) ────────────────────────────────────────
+:root {
+  /* Color scale */
+  --hue-primary:  271;
+  --hue-accent:   174;
+
+  --color-bg:         hsl(var(--hue-primary) 60% 5%);
+  --color-surface:    hsl(var(--hue-primary) 50% 9%);
+  --color-border:     hsl(var(--hue-primary) 30% 18%);
+  --color-text:       hsl(var(--hue-primary) 20% 85%);
+  --color-muted:      hsl(var(--hue-primary) 15% 55%);
+  --color-accent:     hsl(var(--hue-accent)  95% 51%);
+  --color-accent-dim: hsl(var(--hue-accent)  80% 51% / 0.2);
+
+  /* Spacing scale using clamp */
+  --space-xs:  clamp(0.25rem, 0.5vw, 0.5rem);
+  --space-sm:  clamp(0.5rem,  1vw,   0.75rem);
+  --space-md:  clamp(0.75rem, 2vw,   1rem);
+  --space-lg:  clamp(1rem,    3vw,   1.5rem);
+  --space-xl:  clamp(1.5rem,  5vw,   2.5rem);
+
+  /* Typography */
+  --text-xs:   clamp(0.625rem, 1vw, 0.75rem);
+  --text-sm:   clamp(0.75rem,  1.5vw, 0.875rem);
+  --text-base: clamp(0.875rem, 2vw,   1rem);
+  --text-lg:   clamp(1rem,     2.5vw, 1.25rem);
+  --text-xl:   clamp(1.25rem,  3.5vw, 2rem);
+  --text-hero: clamp(2rem,     6vw,   4.5rem);
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px hsl(0 0% 0% / 0.3);
+  --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.4);
+  --shadow-glow: 0 0 24px var(--color-accent-dim);
+}
+
+[data-theme="light"] {
+  --color-bg:      hsl(var(--hue-primary) 10% 98%);
+  --color-surface: hsl(var(--hue-primary) 10% 94%);
+  --color-text:    hsl(var(--hue-primary) 30% 10%);
+  --color-muted:   hsl(var(--hue-primary) 15% 45%);
+}
+
+// ── Mixins ────────────────────────────────────────────────────────────────────
+@mixin respond-to($bp) {
+  $width: map-get($breakpoints, $bp);
+  @if $width == null { @error "Unknown breakpoint: #{$bp}"; }
+  @media (min-width: $width) { @content; }
+}
+
+@mixin focus-ring($color: var(--color-accent), $offset: 2px) {
+  outline: 2px solid $color;
+  outline-offset: $offset;
+}
+
+@mixin visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// ── Functions ─────────────────────────────────────────────────────────────────
+@function rem($px, $base: 16) { @return #{$px / $base}rem; }
+@function alpha($color, $a)   { @return hsl(hue($color) saturation($color) lightness($color) / $a); }
+
+// ── Animations ────────────────────────────────────────────────────────────────
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px var(--color-accent-dim); }
+  50%       { box-shadow: 0 0 32px var(--color-accent-dim), var(--shadow-glow); }
+}
+
+@keyframes skeleton-shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+
+// ── Base & reset ──────────────────────────────────────────────────────────────
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background:  var(--color-bg);
+  color:       var(--color-text);
+  font-family: $font-sans;
+  font-size:   var(--text-base);
+  line-height: 1.6;
+  min-height:  100dvh;
+  transition:  background-color 0.2s $easing, color 0.2s $easing;
+}
+
+// ── Components ────────────────────────────────────────────────────────────────
+.btn {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             var(--space-xs);
+  padding:         var(--space-sm) var(--space-md);
+  border:          1px solid transparent;
+  border-radius:   var(--radius-md);
+  font-size:       var(--text-sm);
+  font-weight:     600;
+  cursor:          pointer;
+  text-decoration: none;
+  transition:      all 0.15s $easing;
+  user-select:     none;
+
+  &:focus-visible { @include focus-ring; }
+  &:disabled      { opacity: 0.4; pointer-events: none; }
+
+  &--primary {
+    background: var(--color-accent);
+    color:      hsl(0 0% 0% / 0.9);
+    &:hover     { filter: brightness(1.1); }
+    &:active    { transform: scale(0.97); }
+  }
+
+  &--outline {
+    border-color: var(--color-border);
+    color:        var(--color-text);
+    &:hover       { background: var(--color-accent-dim); border-color: var(--color-accent); }
+  }
+
+  &--ghost {
+    color: var(--color-muted);
+    &:hover { color: var(--color-text); background: var(--color-surface); }
+  }
+
+  &--sm { padding: var(--space-xs) var(--space-sm); font-size: var(--text-xs); }
+  &--lg { padding: var(--space-md) var(--space-lg); font-size: var(--text-lg); }
+  &--icon { padding: var(--space-sm); aspect-ratio: 1; }
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+.card {
+  --card-padding: var(--space-lg);
+  background:    var(--color-surface);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding:       var(--card-padding);
+  animation:     fade-in 0.3s $easing both;
+
+  &--glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+  &__header   { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-md); }
+  &__title    { font-size: var(--text-lg); font-weight: 700; @include truncate(1); }
+  &__body     { color: var(--color-muted); }
+  &__footer   { margin-top: var(--space-md); padding-top: var(--space-sm); border-top: 1px solid var(--color-border); }
+}
+
+// ── Layout grid ───────────────────────────────────────────────────────────────
+.theme-gallery {
+  list-style: none;
+  display:    grid;
+  gap:        var(--space-lg);
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+
+  @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('xl') { grid-template-columns: repeat(3, 1fr); }
+}
+
+// ── Skeleton loader ───────────────────────────────────────────────────────────
+.skeleton {
+  $base: hsl(var(--hue-primary) 30% 15%);
+  $shine: hsl(var(--hue-primary) 30% 22%);
+
+  background:      linear-gradient(90deg, $base 25%, $shine 50%, $base 75%);
+  background-size: 200% 100%;
+  animation:       skeleton-shimmer 1.5s infinite;
+  border-radius:   var(--radius-sm);
+  color:           transparent !important;
+  pointer-events:  none;
+}
+
+// ── Code block ────────────────────────────────────────────────────────────────
+pre, code {
+  font-family: $font-mono;
+  font-size:   var(--text-sm);
+  tab-size:    2;
+}
+
+pre {
+  background:    hsl(var(--hue-primary) 60% 4%);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding:       var(--space-lg);
+  overflow-x:    auto;
+  position:      relative;
+
+  &::before {
+    content:       attr(data-lang);
+    position:      absolute;
+    top:           var(--space-sm);
+    right:         var(--space-sm);
+    font-size:     var(--text-xs);
+    color:         var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+}
+
+// ── Utility classes ───────────────────────────────────────────────────────────
+.sr-only  { @include visually-hidden; }
+.truncate { @include truncate(1); }
+.line-clamp-2 { @include truncate(2); }
+
+@each $size, $width in $breakpoints {
+  .container-#{$size} {
+    max-width: $width;
+    margin-inline: auto;
+    padding-inline: var(--space-md);
+  }
+}

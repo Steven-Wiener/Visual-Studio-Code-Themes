@@ -1,0 +1,142 @@
+{
+  "$schema": "https://themepreview.dev/schemas/v1/theme.json",
+  "meta": {
+    "generator": "ThemePreview",
+    "version": "2.0.0",
+    "generated_at": "2025-03-07T00:00:00Z"
+  },
+  "theme": {
+    "name": "Neon Vomit Night",
+    "slug": "neon-vomit-night",
+    "version": "2.1.0",
+    "publisher": "Steven-Wiener",
+    "license": "MIT",
+    "status": "published",
+    "install_count": 14200,
+    "rating": 4.7,
+    "tags": ["neon", "glow", "cyberpunk", "dark", "synthwave"],
+    "gallery_banner": { "color": "#070425", "theme": "dark" }
+  },
+  "palette": [
+    "#070425",
+    "#14113d",
+    "#9900FF",
+    "#FF068B",
+    "#09FBD3",
+    "#5CB800",
+    "#FF6F77",
+    "#4499FF",
+    "#80FF00",
+    "#737384"
+  ],
+  "roles": {
+    "editorBg":    "#070425",
+    "sidebarBg":   "#14113d",
+    "titleBarBg":  "#03021a",
+    "fgColor":     "#58c4c4",
+    "accentColor": "#09FBD3",
+    "keywords":    "#9900FF",
+    "functions":   "#5CB800",
+    "strings":     "#FF6F77",
+    "variables":   "#09FBD3",
+    "constants":   "#4499FF",
+    "comments":    "#737384",
+    "types":       "#09FBD3",
+    "tags":        "#FF068B"
+  },
+  "colors": {
+    "editor.background":                     "#070425",
+    "editor.foreground":                     "#58c4c4",
+    "editorCursor.foreground":               "#09FBD3",
+    "editor.lineHighlightBackground":        "#0a061e",
+    "editor.selectionBackground":            "#09FBD347",
+    "editor.selectionHighlightBackground":   "#09FBD32e",
+    "editorIndentGuide.background1":         "#58c4c419",
+    "editorIndentGuide.activeBackground1":   "#09FBD380",
+    "editorLineNumber.foreground":           "#3a3355",
+    "editorLineNumber.activeForeground":     "#5a5375",
+    "activityBar.background":                "#03021a",
+    "activityBar.foreground":                "#58c4c4",
+    "activityBar.activeBorder":              "#09FBD3",
+    "activityBarBadge.background":           "#09FBD3",
+    "activityBarBadge.foreground":           "#000000",
+    "sideBar.background":                    "#14113d",
+    "sideBar.foreground":                    "#58c4c4d9",
+    "sideBar.border":                        "#09FBD340",
+    "titleBar.activeBackground":             "#03021a",
+    "titleBar.activeForeground":             "#58c4c4",
+    "statusBar.background":                  "#770077",
+    "statusBar.foreground":                  "#80FF00",
+    "tab.activeBackground":                  "#070425",
+    "tab.activeForeground":                  "#58c4c4",
+    "tab.activeBorder":                      "#09FBD3",
+    "tab.inactiveBackground":                "#100e37",
+    "tab.inactiveForeground":                "#58c4c480",
+    "terminal.background":                   "#060322",
+    "terminal.foreground":                   "#58c4c4",
+    "terminal.ansiCyan":                     "#09FBD3",
+    "terminal.ansiGreen":                    "#5CB800",
+    "terminal.ansiRed":                      "#FF068B",
+    "terminal.ansiYellow":                   "#FF6F77",
+    "list.activeSelectionBackground":        "#09FBD340",
+    "list.hoverBackground":                  "#09FBD31a",
+    "list.highlightForeground":              "#09FBD3",
+    "scrollbarSlider.background":            "#58c4c425",
+    "scrollbarSlider.hoverBackground":       "#09FBD366",
+    "scrollbarSlider.activeBackground":      "#09FBD399",
+    "focusBorder":                           "#09FBD399",
+    "button.background":                     "#09FBD3",
+    "button.foreground":                     "#000000",
+    "badge.background":                      "#09FBD3",
+    "badge.foreground":                      "#000000",
+    "diffEditor.insertedLineBackground":     "#5CB80014",
+    "diffEditor.removedLineBackground":      "#FF068B14",
+    "gitDecoration.addedResourceForeground":    "#5CB800",
+    "gitDecoration.modifiedResourceForeground": "#09FBD3",
+    "gitDecoration.deletedResourceForeground":  "#FF068B"
+  },
+  "token_colors": [
+    {
+      "scope": ["comment", "punctuation.definition.comment"],
+      "settings": { "foreground": "#737384", "fontStyle": "italic" }
+    },
+    {
+      "scope": ["keyword", "keyword.control", "storage.type"],
+      "settings": { "foreground": "#9900FF" }
+    },
+    {
+      "scope": ["entity.name.function", "meta.function-call", "support.function"],
+      "settings": { "foreground": "#5CB800" }
+    },
+    {
+      "scope": ["string", "string.quoted"],
+      "settings": { "foreground": "#FF6F77" }
+    },
+    {
+      "scope": ["variable", "string constant.other.placeholder"],
+      "settings": { "foreground": "#09FBD3" }
+    },
+    {
+      "scope": ["constant.numeric", "constant.language"],
+      "settings": { "foreground": "#4499FF", "fontStyle": "italic" }
+    },
+    {
+      "scope": ["entity.name.type", "support.class"],
+      "settings": { "foreground": "#09FBD3" }
+    },
+    {
+      "scope": ["entity.name.tag"],
+      "settings": { "foreground": "#FF068B" }
+    }
+  ],
+  "community_reference": {
+    "dracula":          { "bg": "#282a36", "keywords": "#ff79c6", "functions": "#50fa7b", "strings": "#f1fa8c" },
+    "one-dark-pro":     { "bg": "#282c34", "keywords": "#c678dd", "functions": "#61afef", "strings": "#98c379" },
+    "monokai-pro":      { "bg": "#272822", "keywords": "#f92672", "functions": "#a6e22e", "strings": "#e6db74" },
+    "tokyo-night":      { "bg": "#1a1b26", "keywords": "#9d7cd8", "functions": "#7aa2f7", "strings": "#9ece6a" },
+    "catppuccin-mocha": { "bg": "#1e1e2e", "keywords": "#cba6f7", "functions": "#89b4fa", "strings": "#a6e3a1" },
+    "nord":             { "bg": "#2e3440", "keywords": "#81a1c1", "functions": "#88c0d0", "strings": "#a3be8c" },
+    "synthwave-84":     { "bg": "#262335", "keywords": "#fede5d", "functions": "#72f1b8", "strings": "#ff8b39" },
+    "github-dark":      { "bg": "#0d1117", "keywords": "#ff7b72", "functions": "#d2a8ff", "strings": "#a5d6ff" }
+  }
+}

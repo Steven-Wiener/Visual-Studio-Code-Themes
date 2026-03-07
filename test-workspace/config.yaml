@@ -1,0 +1,233 @@
+# theme_preview.yaml — YAML syntax showcase
+# Covers: scalars, sequences, mappings, anchors, aliases,
+#         multi-line strings, explicit types, complex nesting
+
+---
+# ── Metadata ───────────────────────────────────────────────────────────────────
+meta:
+  generated_by: ThemePreview
+  version:      "1.0.0"
+  schema:       https://themepreview.dev/schemas/v1/theme.json
+
+# ── Anchors & aliases ─────────────────────────────────────────────────────────
+defaults: &defaults
+  publisher:  Steven-Wiener
+  license:    MIT
+  engines:
+    vscode: "^1.91.1"
+  repository:
+    type: git
+    url:  https://github.com/Steven-Wiener/Visual-Studio-Code-Themes
+
+# ── Theme definitions ─────────────────────────────────────────────────────────
+themes:
+
+  - <<: *defaults
+    name:    Neon Vomit Night
+    slug:    neon-vomit-night
+    status:  published
+    version: "2.1.0"
+    gallery_banner:
+      color: "#070425"
+      theme: dark
+
+    palette:
+      - "#070425"   # editor background
+      - "#14113d"   # sidebar background
+      - "#9900FF"   # keywords / primary accent
+      - "#FF068B"   # tags / delete / errors
+      - "#09FBD3"   # variables / cyan accent
+      - "#5CB800"   # functions / green
+      - "#FF6F77"   # strings / coral
+      - "#4499FF"   # constants / blue
+      - "#80FF00"   # status bar fg / bright green
+      - "#737384"   # comments / muted
+
+    colors:
+      editor.background:         "#070425"
+      editor.foreground:         "#58c4c4"
+      editorCursor.foreground:   "#09FBD3"
+      activityBar.background:    "#070425"
+      activityBar.activeBorder:  "#09FBD3"
+      sideBar.background:        "#14113d"
+      statusBar.background:      "#770077"
+      statusBar.foreground:      "#80FF00"
+      titleBar.activeBackground: "#9900FFA0"
+
+    token_colors:
+      comment:   { foreground: "#737384", font_style: italic }
+      keyword:   { foreground: "#9900FF" }
+      function:  { foreground: "#5CB800" }
+      string:    { foreground: "#FF6F77" }
+      variable:  { foreground: "#09FBD3" }
+      constant:  { foreground: "#4499FF", font_style: italic }
+      type:      { foreground: "#09FBD3" }
+      tag:       { foreground: "#FF0077" }
+
+    keywords:     [neon, glow, cyberpunk, dark, synthwave]
+    install_count: 14200
+    rating:        4.7
+
+  - <<: *defaults
+    name:    Teal Steel
+    slug:    teal-steel
+    status:  published
+    version: "0.3.1"
+    gallery_banner:
+      color: "#004d4d"
+      theme: dark
+
+    palette:
+      - "#004d4d"
+      - "#003333"
+      - "#002222"
+      - "#ff79c6"
+      - "#50fa7b"
+      - "#f1fa8c"
+      - "#8be9fd"
+      - "#bd93f9"
+      - "#00cccc"
+      - "#6272a4"
+
+    keywords:     [teal, dark, professional, muted]
+    install_count: 8500
+    rating:        4.5
+
+# ── Pipeline / CI config example ──────────────────────────────────────────────
+ci:
+  name: ThemePreview CI
+
+  on:
+    push:
+      branches: [main, "release/*"]
+      paths-ignore:
+        - "**.md"
+        - "docs/**"
+    pull_request:
+      branches: [main]
+    workflow_dispatch:
+      inputs:
+        environment:
+          description: "Deploy target"
+          required:    true
+          default:     staging
+          type:        choice
+          options:     [staging, production]
+
+  env:
+    NODE_VERSION:  "22"
+    VSCE_PAT:      ${{ secrets.VSCE_PAT }}
+
+  jobs:
+    lint-and-test:
+      runs-on:  ubuntu-latest
+      strategy:
+        fail-fast: false
+        matrix:
+          os:          [ubuntu-latest, windows-latest, macos-latest]
+          node:        ["20", "22"]
+          exclude:
+            - os:   windows-latest
+              node: "20"
+
+      steps:
+        - uses: actions/checkout@v4
+          with: { fetch-depth: 0 }
+
+        - name: Setup Node ${{ matrix.node }}
+          uses: actions/setup-node@v4
+          with:
+            node-version: ${{ matrix.node }}
+            cache:        npm
+
+        - name: Install dependencies
+          run:  npm ci
+
+        - name: Lint
+          run:  npm run lint
+
+        - name: Test
+          run:  npm test -- --coverage
+
+        - name: Upload coverage
+          uses: codecov/codecov-action@v4
+          if:   matrix.os == 'ubuntu-latest' && matrix.node == '22'
+          with:
+            token: ${{ secrets.CODECOV_TOKEN }}
+
+    publish:
+      needs:  lint-and-test
+      runs-on: ubuntu-latest
+      if:     github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with: { node-version: "22", cache: npm }
+        - run:  npm ci
+        - run:  npx vsce publish --no-dependencies
+          env:  { VSCE_PAT: ${{ secrets.VSCE_PAT }} }
+
+# ── Scalar types showcase ─────────────────────────────────────────────────────
+scalars:
+  integer:     42
+  negative:    -17
+  float:       3.14159
+  scientific:  6.022e23
+  boolean_t:   true
+  boolean_f:   false
+  null_val:    ~
+  null_val2:   null
+  date:        2025-03-07
+  datetime:    2025-03-07T12:00:00Z
+  hex_int:     0xFF
+  octal_int:   0o755
+
+  literal_block: |
+    This preserves newlines.
+    Each line is kept as-is.
+    Trailing newline included.
+
+  folded_block: >
+    This folds newlines into spaces.
+    Long lines are joined together
+    into a single paragraph.
+
+  quoted_special: "Tab:\t Newline:\n Quote:\""
+  single_quoted:  'No escaping here: \n is literal'
+
+# ── Complex nesting ────────────────────────────────────────────────────────────
+services:
+  api:
+    image:   themepreview/api:latest
+    ports:   ["8080:8080"]
+    environment:
+      DATABASE_URL: postgresql://user:pass@db:5432/themepreview
+      REDIS_URL:    redis://cache:6379
+      LOG_LEVEL:    info
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_started
+    healthcheck:
+      test:     ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout:  10s
+      retries:  3
+
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB:       themepreview
+      POSTGRES_USER:     user
+      POSTGRES_PASSWORD: pass
+    healthcheck:
+      test:     ["CMD-SHELL", "pg_isready -U user -d themepreview"]
+      interval: 10s
+      retries:  5
+
+volumes:
+  pg_data: {}
