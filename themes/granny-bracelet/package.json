@@ -1,0 +1,49 @@
+{
+  "name": "granny-bracelet",
+  "displayName": "Granny Bracelet",
+  "version": "0.0.1",
+  "publisher": "Steven-Wiener",
+  "description": "Inspired by a pretty garment",
+  "author": {
+    "name": "Steven Wiener",
+    "url": "https://steven-wiener.github.io/"
+  },
+  "categories": ["Themes"],
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#173A2E",
+    "theme": "dark"
+  },
+  "pricing": "Free",
+  "engines": {
+    "vscode": "^1.91.1"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Granny Bracelet",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Granny Bracelet-color-theme.json"
+      }
+    ]
+  },
+  "keywords": [
+    "color-theme",
+    "dark-theme",
+    "gold",
+    "green",
+    "vscode-theme"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Steven-Wiener/Visual-Studio-Code-Themes/issues/new?title=Granny%20Bracelet%20%7C%20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Steven-Wiener/Visual-Studio-Code-Themes"
+  },
+  "homepage": "https://github.com/Steven-Wiener/Visual-Studio-Code-Themes",
+  "sponsor": {
+    "url": "https://account.venmo.com/u/Steven-Wiener-1"
+  }
+}
