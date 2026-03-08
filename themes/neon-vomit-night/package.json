@@ -9,7 +9,7 @@
     "url": "https://steven-wiener.github.io/"
   },
   "categories": ["Themes"],
-  "icon": "icon.png",
+  "icon": "media/icon.png",
   "galleryBanner": {
     "color": "#070425",
     "theme": "dark"
