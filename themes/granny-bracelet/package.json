@@ -1,7 +1,7 @@
 {
   "name": "granny-bracelet",
   "displayName": "Granny Bracelet",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "Steven-Wiener",
   "description": "Inspired by a pretty garment",
   "author": {
@@ -9,7 +9,7 @@
     "url": "https://steven-wiener.github.io/"
   },
   "categories": ["Themes"],
-  "icon": "icon.png",
+  "icon": "media/icon.png",
   "galleryBanner": {
     "color": "#173A2E",
     "theme": "dark"
