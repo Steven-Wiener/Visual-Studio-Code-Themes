@@ -1,17 +1,10 @@
-# My Generated Theme
+# Purple People Eater
 
-> A custom dark VS Code color theme.
+> A dark purple and pink VS Code color theme
 
-## Screenshot
-
-<!-- Add a screenshot here -->
-
-## Installation
-
-1. Open **Extensions** (`Ctrl+Shift+X` / `Cmd+Shift+X`)
-2. Search for **My Generated Theme**
-3. Click **Install**
-4. Press `Ctrl+K Ctrl+T` and select **My Generated Theme**
+<p align="center">
+  <img alt="Theme Preview" src="https://raw.githubusercontent.com/Steven-Wiener/Visual-Studio-Code-Themes/tree/main/themes/purple-people-eater/media/preview.png">
+</p>
 
 ## Color Palette
 
@@ -34,7 +27,7 @@
 
 ## Support
 
-If you enjoy this theme, consider [buying me a coffee](https://account.venmo.com/u/Steven-Wiener-1). ☕
+If you enjoy this theme, consider [buying me a beer](https://account.venmo.com/u/Steven-Wiener-1)! 🍺
 
 ## License
 
