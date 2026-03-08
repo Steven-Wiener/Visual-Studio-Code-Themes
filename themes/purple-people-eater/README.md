@@ -3,7 +3,7 @@
 > A dark purple and pink VS Code color theme
 
 <p align="center">
-  <img alt="Theme Preview" src="https://raw.githubusercontent.com/Steven-Wiener/Visual-Studio-Code-Themes/tree/main/themes/purple-people-eater/media/preview.png">
+  <img alt="Theme Preview" src="https://raw.githubusercontent.com/Steven-Wiener/Visual-Studio-Code-Themes/main/themes/purple-people-eater/media/preview.png">
 </p>
 
 ## Color Palette
